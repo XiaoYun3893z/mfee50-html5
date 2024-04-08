@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const p1 = {
+        name: "John",
+        age: 26,
+      };
+      const p2 = {
+        name: "Bill",
+        age: 24,
+      };
+      const p3 = {
+        name: "David",
+        age: 27,
+      };
+      p1.next = p2;
+      p2.next = p3;
+      p3.next = p1;
+      // 無法用 JSON 做深層複製
+
+
+      const p4 = structuredClone(p1); // 深層複製
+    </script>
+  </body>
+</html>
