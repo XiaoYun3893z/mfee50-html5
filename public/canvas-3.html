@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      canvas {
+        border: 1px dotted green;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myc" width="600" height="600"></canvas>
+    <script>
+      const myc = document.querySelector("#myc");
+      const ctx = myc.getContext("2d");
+
+      for (let i = 10; i < 200; i += 40) {
+        ctx.beginPath();
+        ctx.arc(300, 300, i, 0, 2 * Math.PI);
+        ctx.strokeStyle = `hsl(${Math.floor(360*Math.random())},100%,40%)`;
+        ctx.lineWidth = 20;
+        ctx.stroke();
+      }
+    </script>
+  </body>
+</html>
