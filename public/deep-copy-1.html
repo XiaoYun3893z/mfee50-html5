@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const p1 = {
+        name: {
+          first: "John",
+          last: "Doe",
+        },
+        age: 27,
+      };
+
+      const p2 = { ...p1 }; // 淺層複製
+      const p3 = JSON.parse(JSON.stringify(p1)); // 深層複製
+
+      p1.name.last = "Wick";
+
+      console.log(JSON.stringify({p1, p2, p3}, null, 4));
+
+    </script>
+  </body>
+</html>
