@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      canvas {
+        border: 1px dotted green;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myc" width="600" height="600"></canvas>
+    <script>
+      const myc = document.querySelector("#myc");
+      const ctx = myc.getContext("2d");
+
+      ctx.beginPath();
+      ctx.arc(300, 300, 200, 0, 1.5 * Math.PI);
+      ctx.strokeStyle = "orange";
+      ctx.lineWidth = 20;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(300, 300, 180, 0, 1.5 * Math.PI, true);
+      ctx.strokeStyle = "tomato";
+      ctx.lineWidth = 20;
+      ctx.stroke();
+    </script>
+  </body>
+</html>
