@@ -1,15 +1,30 @@
 import express from "express";
 import serveIndex from "serve-index";
 
-const web_port =3031;
+const web_port = 3031;
 const app = express();
 
 // routes
 
-app.use(express.static("public"));
-app.use("/",serveIndex("public", { icons: true}));
+app.get("/try-sse", (req, res) => {
+  let id = 30;
 
-app.listen(web_port, () => {
-    console.log(`伺服器啟動於通訊埠：${web_port}`);
+  res.writeHead(200, {
+    "Content-Type": "text/event-stream; charset=utf-8",
+    "Cache-Control": "no-cache",
+    Connection: "keep-alive",
+  });
+
+  setInterval(() => {
+    const now = new Date();
+    res.write(`id: ${id++}\n`);
+    res.write(`data: ${ now.toLocaleString()}\n\n`);
+  }, 2000);
 });
 
+app.use(express.static("public"));
+app.use("/", serveIndex("public", { icons: true }));
+
+app.listen(web_port, () => {
+  console.log(`伺服器啟動於通訊埠: ${web_port}`);
+});
