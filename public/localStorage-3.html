@@ -28,13 +28,15 @@
         if (key.indexOf(prefix) === 0) {
           // key 前面是 "form1;;"
           const value = localStorage.getItem(key);
+          const t = +key.slice(prefix.length); // + 正號: 做字串轉數值
+
           const obj = JSON.parse(value);
 
           str += `<tr>
             <td>${obj.name}</td>
             <td>${obj.mobile}</td>
             <td>${obj.birthday}</td>
-            <td> </td>
+            <td>${new Date(t).toISOString()}</td>
             </tr>`;
         }
       }
