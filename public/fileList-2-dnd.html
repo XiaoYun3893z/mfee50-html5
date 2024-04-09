@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .rect {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background-color: #55eefc;
+        border: 1px solid gray;
+      }
+      .ball {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 60px;
+        background-color: #ff9e6d;
+        border: 1px solid black;
+        color: white;
+        font-weight: 800;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="rect" style="left: 300px"></div>
+
+    <script>
+      const rect = document.querySelector(".rect");
+
+      rect.addEventListener("dragenter", (e) => {
+        e.currentTarget.style.backgroundColor = "#FFAAAA";
+      });
+      rect.addEventListener("dragleave", (e) => {
+        e.currentTarget.style.backgroundColor = "#a2eff6";
+      });
+      rect.addEventListener("dragover", (e) => e.preventDefault());
+      rect.addEventListener("drop", (e) => {
+        e.preventDefault();
+        // e.dataTransfer.files 拖拉進來的檔案 FileList
+        console.log(e.dataTransfer.files);
+      });
+    </script>
+  </body>
+</html>
