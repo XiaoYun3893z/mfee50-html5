@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .rect {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background-color: #a2eff6;
+        border: 1px solid gray;
+      }
+      .ball {
+        position: absolute;
+        width: 60px;
+        min-width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 60px;
+        background-color: #ee6f2f;
+        border: 1px solid black;
+        color: white;
+        font-weight: 800;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="rect">
+      <div class="ball">77</div>
+      <div class="ball" style="background-color: blue; left: 70px">88</div>
+      <div class="ball" style="background-color: red; left: 140px">99</div>
+    </div>
+
+    <script>
+      let myTarget = {
+        el: null, // element 是誰
+        x: 0,
+        y: 0,
+      };
+      const ball = document.querySelector(".ball");
+      const [r0, r] = document.querySelectorAll(".rect");
+
+      const mouseDown = (e) => {
+        myTarget = {
+          el: e.currentTarget, // 滑鼠點到的對象
+          x: e.offsetX, // 滑鼠點到的相對位置
+          y: e.offsetY,
+        };
+        myTarget.el.addEventListener("mousemove", mouseMove);
+      };
+      const mouseMove = (e) => {
+        if (myTarget.el) {
+          const { el, x, y } = myTarget;
+          el.style.left = e.pageX - x + "px";
+          el.style.top = e.pageY - y + "px";
+        }
+      };
+      const mouseUp = (e) => {
+        if (myTarget.el) {
+          myTarget.el.removeEventListener("mousemove", mouseMove);
+        }
+        myTarget.el = null;
+      };
+
+      ball.addEventListener("mousedown", mouseDown);
+      window.addEventListener("mouseup", mouseUp);
+    </script>
+  </body>
+</html>
