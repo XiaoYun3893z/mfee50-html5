@@ -19,7 +19,7 @@ app.get("/try-sse", (req, res) => {
   setInterval(() => {
     const now = new Date();
     res.write(`id: ${id++}\n`);
-    res.write(`data: ${ now.toLocaleString()}\n\n`);
+    res.write(`data: ${now.toLocaleString()}\n\n`);
   }, 2000);
 });
 
