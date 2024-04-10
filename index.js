@@ -2,6 +2,7 @@ import express from "express";
 import serveIndex from "serve-index";
 import "./routes/ws-echo.js";
 import "./routes/ws-chat.js";
+import "./routes/ws-draw.js";
 
 const web_port = 3031;
 const app = express();
