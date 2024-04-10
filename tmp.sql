@@ -23,3 +23,6 @@ SELECT ab.*, li.sid like_sid FROM address_book ab
     SELECT * FROM ab_likes WHERE member_sid=3
   ) li ON ab.sid=li.ab_sid
   ORDER BY ab.sid DESC LIMIT 0, 20;
+
+-- 求距離的 SQL
+  -- https://qops.blogspot.com/search/label/MySQL
